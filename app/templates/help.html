@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}客户备份管理_使用帮助{% endblock %}
+{% block content %}
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">使用帮助</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>1.备份平台流程图</h4>
+                    <img src="/static/image/back.png" class="img-responsive" alt="异地备份方案">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>1.客户机器计划任务</h4>
+                    <span>00 5,10,15,20,23 * * * /usr/bin/python /d20141021/scripts/qixingdai_Backup_Mysql.pyc</span>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+{% endblock %}

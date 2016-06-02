@@ -1,0 +1,6 @@
+ul, li{list-style:none;}
+.form_list li{margin: 10px 0; line-height:30px;}
+.form_list label{float:left;line-height: 32px; width:160px; text-align:right;font-weight:normal;}
+.form_list input{background-color: #fff;border: 1px solid #ccc; }
+.form_list input.input-sm{width:30%;}
+.form_list input[type=radio]{ position:relative; top:2px;}

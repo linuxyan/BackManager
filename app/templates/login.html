@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>备份管理系统_登录</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<!--登录页面-->
+<style>
+	body {background-color: #f8f8f8;font-family:"微软雅黑";}
+	.panel{margin-top:25%}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">用户登录</h3>
+				</div>
+				<div class="panel-body">
+                    <form method="POST" role="form">
+                        {{form.hidden_tag()}}
+						<fieldset>
+							<div class="form-group">
+                                {{form.username(type="text",class="form-control",placeholder="请输入用户名")}}
+							</div>
+							<div class="form-group">
+                                {{form.password(type="password",class="form-control",placeholder="请输入密码")}}
+							</div>
+                            <div class="checkbox">
+								<label>
+                                    {{form.remember_me() }} 记住我
+								</label>
+							</div>
+                            <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>

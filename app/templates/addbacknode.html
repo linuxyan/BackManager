@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}客户备份管理_添加节点{% endblock %}
+{% block content %}
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">添加备份节点</h2>
+                </div>
+            </div>
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">添加备份节点</div>
+						<div class="panel-body">
+                        {% for message in get_flashed_messages() %}
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                        </div>
+                        {% endfor %}
+							<form role="form" action="" method="post">
+							   <ul class="form_list clearfix">
+								   <li><label>节点名称：</label><input class="input-sm" name="node_name"></li>
+                                   <li><label>FTP地址：</label><input class="input-sm" name="ftp_ip"></li>
+                                   <li><label>FTP端口：</label><input class="input-sm" name="ftp_port"></li>
+                                   <li><label>FTP帐号：</label><input class="input-sm" name="ftp_user"></li>
+                                   <li><label>FTP密码：</label><input class="input-sm" name="ftp_pass"></li>
+                                   <li><label></label><input type="submit" value="添加备份节点" /></li>
+							   </ul>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        </div>
+        <!-- /#page-wrapper -->
+{% endblock %}

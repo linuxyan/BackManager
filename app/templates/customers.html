@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}客户备份管理_平台列表{% endblock %}
+{% block content %}
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">备份平台列表</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">备份平台列表</div>
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>客户名称</th>
+                                            <th>客户简称</th>
+                                            <th>数据库IP</th>
+                                            <th>数据库端口</th>
+                                            <th>数据库名称</th>
+                                            <th>数据库用户</th>
+                                            <th>数据库密码</th>
+                                            <th>本地保存</th>
+                                            <th>远程备份节点</th>
+                                            <th>状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for customer in customers %}
+                                        <tr>
+                                            <td>{{ customer.id }}</td>
+                                            <td>{{ customer.customers_name }}</td>
+                                            <td>{{ customer.customers_short }}</td>
+                                            <td>{{ customer.db_ip }}</td>
+                                            <td>{{ customer.db_port }}</td>
+                                            <td>{{ customer.db_name }}</td>
+                                            <td>{{ customer.db_user }}</td>
+                                            <td>{{ customer.db_pass }}</td>
+                                            {% if customer.local_save == 0 %}
+                                                <td  align="center"><i class="fa fa-check fa-lg"></i></td>
+                                            {% else %}
+                                                <td  align="center"><i class="fa fa-times fa-lg"></i></td>
+                                            {% endif %}
+                                            <td >{{ customer.backhosts.host_node }}</td>
+                                            {% if customer.customers_status == 0 %}
+                                                <td  align="center"><i class="fa fa-refresh fa-lg fa-spin"></i></td>
+                                            {% else %}
+                                                <td  align="center"><i class="fa fa-times-circle fa-lg"></i></td>
+                                            {% endif %}
+
+                                            <td align="center">
+                                                {% if customer.customers_status == 0 %}
+                                                <a href="#" class="back_oper" customer_id="{{ customer.id }}" customer_oper="stop_back" title="停止备份"><i class="fa fa-stop fa-lg"></i></a>
+                                                {% else %}
+                                                <a href="#" class="back_oper" customer_id="{{ customer.id }}" customer_oper="start_back" title="开启备份"><i class="fa fa-play fa-lg"></i></a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--表格结束-->
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    <!-- 表格搜索等调用 -->   
+    <script src="/static/js/dataTables/jquery.dataTables.min.js"></script><!--筛选/分页-->
+    <script src="/static/js/dataTables/dataTables.bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
+
+{% endblock %}

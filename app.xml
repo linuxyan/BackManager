@@ -1,0 +1,10 @@
+<uwsgi>
+  <pythonpath>/data/www/BackManage</pythonpath>
+  <module>manager</module>
+  <callable>app</callable>
+  <socket>127.0.0.1:5000</socket>
+  <master/>
+  <processes>5</processes>
+  <threads>true</threads>
+  <memory-report/>
+</uwsgi>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}客户备份管理_系统设置{% endblock %}
+{% block content %}
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">变更系统设置</h2>
+                </div>
+            </div>
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">变更系统设置</div>
+						<div class="panel-body">
+                        {% for message in get_flashed_messages() %}
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                        </div>
+                        {% endfor %}
+							<form role="form" action="" method="post">
+							   <ul class="form_list clearfix">
+								   <li><label>API地址：</label><input class="input-sm" name="apiurl" value="{{ apiurl }}"></li>
+                                   <li><label>API路径：</label><input class="input-sm" name="apipath" value="{{ apipath }}" ></li>
+                                   <li><label>API端口：</label><input class="input-sm" name="apiport" value="{{ apiport }}" ></li>
+                                   <li><label>微信CorpID：</label><input class="input-sm" name="CorpID" value="{{ CorpID }}"></li>
+                                   <li><label>微信Secret：</label><input class="input-sm" name="Secret" value="{{ Secret }}" ></li>
+                                   <li><label></label><input type="submit" value="保存配置" /></li>
+							   </ul>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        </div>
+        <!-- /#page-wrapper -->
+{% endblock %}

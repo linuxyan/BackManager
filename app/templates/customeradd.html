@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}客户备份管理_添加平台{% endblock %}
+{% block content %}
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">添加备份平台</h2>
+                </div>
+            </div>
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">添加备份平台</div>
+						<div class="panel-body">
+                        {% for message in get_flashed_messages() %}
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                        </div>
+                        {% endfor %}
+							<form role="form" action="" method="post">
+							   <ul class="form_list clearfix">
+								   <li><label>客户名称：</label><input class="input-sm" name="customers_name"></li>
+                                   <li><label>客户简称：</label><input class="input-sm" name="customers_short"></li>
+                                   <li><label>mysqldump路径：</label><input class="input-sm" name="mysqldump_path" value="/usr/bin/mysqldump"></li>
+                                   <li><label>本地备份目录：</label><input class="input-sm" name="local_back_dir"></li>
+                                   <li><label>数据库地址：</label><input class="input-sm" name="db_ip"></li>
+                                   <li><label>数据库端口：</label><input class="input-sm" name="db_port"></li>
+                                   <li><label>数据库用户：</label><input class="input-sm" name="db_user"></li>
+                                   <li><label>数据库密码：</label><input class="input-sm" name="db_pass"></li>
+                                   <li><label>数据库名称：</label><input class="input-sm" name="db_name"></li>
+								   <li>
+									   <label>远程备份节点：</label>
+									   <select class="input-sm" name="backhost_id">
+                                           {% for back_host in back_hosts %}
+                                               <option   value= "{{ back_host.id }}"> {{ back_host.host_node }} </option>
+                                           {% endfor %}
+									   </select>
+								   </li>
+								   <li class="clearfix">
+									   <label>本地是否保留备份：</label>
+									   <input type="radio" value="0" name="local_save" checked="">是
+									   &nbsp;&nbsp;&nbsp;&nbsp;
+									   <input type="radio" value="1" name="local_save">否
+								   </li>
+
+                                   <li><label></label><input type="submit" value="添加并生成备份脚本"/></li>
+
+							   </ul>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        </div>
+        <!-- /#page-wrapper -->
+{% endblock %}
